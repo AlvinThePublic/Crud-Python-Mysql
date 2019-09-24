@@ -58,7 +58,7 @@ def hapusData(db):
 
 def searchData(db):
     cursor = db.cursor()
-    keyword = input("Search data Guru...")
+    keyword = input("Search data Guru... ")
     sql = "SELECT * FROM tb_guru WHERE nama_guru LIKE %s OR nip LIKE %s OR alamat LIKE %s OR mapel LIKE %s"
     val = ("%{}%".format(keyword), "%{}%".format(keyword) , "%{}%".format(keyword),  "%{}%".format(keyword))
     cursor.execute(sql,val)
