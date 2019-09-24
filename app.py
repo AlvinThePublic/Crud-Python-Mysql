@@ -25,12 +25,15 @@ def showData(db):
     sql = "SELECT * FROM tb_guru"
     cursor.execute(sql)
     result = cursor.fetchall()
-
+    print('<---------------------------- Data Guru Tahun Ajaran 2019 -------------------------->')
     if cursor.rowcount < 0:
         print ("Tdak Ada Data")
     else:
         for data in result:
-            print(data)
+            
+            print("|",data[0],"|","Nama : ",data[1],"   Nip : ",data[2],"  Alamat : ",data[4])
+            print('|-----------------------------------------------------------------------------------')
+            
 
 def updateData(db):
     cursor = db.cursor()
@@ -58,7 +61,7 @@ def hapusData(db):
 
 def searchData(db):
     cursor = db.cursor()
-    keyword = input("Search data Guru... ")
+    keyword = input("Search data Guru...")
     sql = "SELECT * FROM tb_guru WHERE nama_guru LIKE %s OR nip LIKE %s OR alamat LIKE %s OR mapel LIKE %s"
     val = ("%{}%".format(keyword), "%{}%".format(keyword) , "%{}%".format(keyword),  "%{}%".format(keyword))
     cursor.execute(sql,val)
@@ -70,6 +73,7 @@ def searchData(db):
             print(data)
 
 def showMenu(db):
+    print('\n\n')
     print("<------- Python With Mysql ------->")
     print("1. Insert Data")
     print("2. Tampilkan Data")
